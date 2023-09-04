@@ -16,35 +16,58 @@
             padding: 20px;
             margin: 20px auto;
             background-color: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-weight: bold;
         }
 
         .form-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-top: 20px;
+        }
+
+        /* Add more space between buttons */
+        .form-footer .btn {
+            margin-right: 10px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1 class="text-center">Add Transaction</h1>
-        <form action="{{ url_for('add_transaction') }}" method="POST">
-            <div class="form-group">
-                <label for="date">Date:</label>
-                <input type="date" name="date" id="date" class="form-control" required>
-            </div>
+        <div class="form-container">
+            <h1 class="form-header">Add Transaction</h1>
+            <form action="{{ url_for('add_transaction') }}" method="POST">
+                <div class="form-group">
+                    <label for="date">Date:</label>
+                    <input type="date" name="date" id="date" class="form-control" required>
+                </div>
 
-            <div class="form-group">
-                <label for="amount">Amount:</label>
-                <input type="number" name="amount" id="amount" class="form-control" required>
-            </div>
+                <div class="form-group">
+                    <label for="amount">Amount:</label>
+                    <input type="number" name="amount" id="amount" class="form-control" required>
+                </div>
 
-            <div class="form-footer">
-                <input class="btn btn-success" type="submit" value="Add Transaction">
-                <a class="btn btn-info" href="{{ url_for('get_transactions') }}">Go Back</a>
-            </div>
-        </form>
+                <div class="form-footer">
+                    <input class="btn btn-success" type="submit" value="Add Transaction">
+                    <a class="btn btn-info" href="{{ url_for('get_transactions') }}">Go Back to Transactions</a>
+                    <a class="btn btn-primary" href="{{ url_for('search_transactions') }}">Search Transactions</a>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 </html>
